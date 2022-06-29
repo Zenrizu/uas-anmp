@@ -64,17 +64,8 @@
             app:popUpTo="@id/fragmentEditProfile"
             app:popUpToInclusive="true" />
         <argument
-            android:name="nama"
-            app:argType="string"
-            android:defaultValue="William Anderson" />
-        <argument
-            android:name="phone"
-            app:argType="string"
-            android:defaultValue="082163451224" />
-        <argument
-            android:name="email"
-            app:argType="string"
-            android:defaultValue="andersenwills@gmail.com" />
+            android:name="accountID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemMyKost"
@@ -92,14 +83,8 @@
             app:popUpTo="@id/itemProfile"
             app:popUpToInclusive="true" />
         <argument
-            android:name="nama"
-            app:argType="string" />
-        <argument
-            android:name="phone"
-            app:argType="string" />
-        <argument
-            android:name="email"
-            app:argType="string" />
+            android:name="accountID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemRegister"
