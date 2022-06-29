@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutPasswordRegister">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextRetypePasswordRegister2"
+            android:id="@+id/editTextRetypePasswordRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Retype Password"

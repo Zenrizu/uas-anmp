@@ -20,7 +20,6 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
     val loadingLD = MutableLiveData<Boolean>()
     val db = accountDb(getApplication())
 
-
     private var job = Job()
 
     override val coroutineContext: CoroutineContext

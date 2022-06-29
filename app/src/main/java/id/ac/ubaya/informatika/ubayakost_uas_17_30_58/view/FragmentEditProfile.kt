@@ -34,8 +34,8 @@ class FragmentEditProfile : Fragment() {
             editProfileEmail.setText(nama)
             editProfilePhoneNumber.setText(phone)
             editProfileNama.setText(email)
-
         }
+
         buttonSave.setOnClickListener {
             Navigation.findNavController(it).navigate(FragmentEditProfileDirections.actionFragmentEditProfileToItemProfile(editProfileEmail.text.toString(),editProfilePhoneNumber.text.toString(),editProfileNama.text.toString()))
         }
