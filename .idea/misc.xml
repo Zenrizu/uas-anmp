@@ -19,13 +19,10 @@
         <entry key="..\:/Perkuliahan/SMT 6/ANMP/UbayaKost_160419017/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Perkuliahan/SMT 6/ANMP/UbayaKost_160419017/app/src/main/res/layout/fragment_my_kost.xml" value="0.33" />
         <entry key="..\:/Perkuliahan/SMT 6/ANMP/UbayaKost_160419017/app/src/main/res/menu/bottom_menu.xml" value="0.22" />
-        <entry key="..\:/SMT 6/ANMP/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
-        <entry key="..\:/SMT 6/ANMP/app/src/main/res/layout/fragment_login.xml" value="0.17074275362318841" />
-        <entry key="..\:/SMT 6/ANMP/app/src/main/res/layout/fragment_register.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

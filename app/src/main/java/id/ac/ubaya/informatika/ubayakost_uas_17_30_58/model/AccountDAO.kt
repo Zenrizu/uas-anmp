@@ -10,6 +10,9 @@ interface AccountDAO {
     @Query("SELECT * FROM account WHERE username= :username AND password= :password")
     suspend fun login(username:String, password:String): Account
 
-    @Update
-    suspend fun editAccount(vararg  account: Account)
+    @Query("SELECT * FROM account WHERE username= :username")
+    suspend fun profile(username:String): Account
+
+    @Query("UPDATE account SET email=:email, name=:name, phoneNumber=:phoneNumber WHERE username=:username")
+    suspend fun editAccount(email:String, name:String, phoneNumber: String, username: String)
 }

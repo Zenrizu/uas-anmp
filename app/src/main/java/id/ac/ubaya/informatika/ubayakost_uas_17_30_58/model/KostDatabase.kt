@@ -6,6 +6,7 @@ import androidx.room.*
 @Database(entities = arrayOf(Kost::class), version = 1)
 abstract class KostDatabase:RoomDatabase() {
     abstract fun kostDao(): KostDAO
+    abstract fun accountDao(): AccountDAO
 
     companion object {
         @Volatile
@@ -13,7 +14,7 @@ abstract class KostDatabase:RoomDatabase() {
         private val LOCK = Any()
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext, KostDatabase::class.java, "kost")
+            Room.databaseBuilder(context.applicationContext, KostDatabase::class.java, "kostDBase")
                 .build()
 
         operator fun invoke(context: Context) {
