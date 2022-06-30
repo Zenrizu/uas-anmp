@@ -64,8 +64,8 @@
             app:popUpTo="@id/fragmentEditProfile"
             app:popUpToInclusive="true" />
         <argument
-            android:name="accountID"
-            app:argType="integer" />
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemMyKost"
@@ -83,8 +83,8 @@
             app:popUpTo="@id/itemProfile"
             app:popUpToInclusive="true" />
         <argument
-            android:name="accountID"
-            app:argType="integer" />
+            android:name="username"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemRegister"

@@ -3,12 +3,11 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.room.Room
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
-import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.AccountDatabase
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.KostDatabase
 import java.lang.Exception
 
 fun ImageView.loadImage(url: String?,progressBar: ProgressBar) {
@@ -27,9 +26,9 @@ fun ImageView.loadImage(url: String?,progressBar: ProgressBar) {
         })
 }
 
-val DB_ACCOUNT = "account"
+val DB_KOST = "kostDBase"
 
-fun accountDb(context: Context):AccountDatabase {
-    val db = Room.databaseBuilder(context, AccountDatabase::class.java, DB_ACCOUNT).build()
+fun accountDb(context: Context):KostDatabase {
+    val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_KOST).build()
     return db
 }

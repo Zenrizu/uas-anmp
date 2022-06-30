@@ -27,13 +27,13 @@ class FragmentDetailKost : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        if(arguments != null) {
-            viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-            val id = FragmentDetailKostArgs.fromBundle(requireArguments()).id
-            viewModel.fetch(id)
-        }
-
-        observeViewModel()
+//        if(arguments != null) {
+//            viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+//            val id = FragmentDetailKostArgs.fromBundle(requireArguments()).id
+//            viewModel.fetch(id)
+//        }
+//
+//        observeViewModel()
 
         buttonBooking.setOnClickListener {
             val action = FragmentDetailKostDirections.actionCheckout(textViewID.text.toString())

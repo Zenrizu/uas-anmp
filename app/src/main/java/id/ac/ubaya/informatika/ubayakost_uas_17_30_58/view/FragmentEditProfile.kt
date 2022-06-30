@@ -5,39 +5,62 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
-import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.loadImage
-import kotlinx.android.synthetic.main.fragment__profile.*
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.FragmentEditProfileBinding
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
-import kotlinx.android.synthetic.main.fragment_my_kost.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
 
-class FragmentEditProfile : Fragment() {
+class FragmentEditProfile : Fragment(), ButtonSaveProfilClickListener{
 
+    private lateinit var viewModel: AccountViewModel
+    private lateinit var dataBinding: FragmentEditProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentEditProfileBinding>(inflater, R.layout.fragment_edit_profile, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        val username = view.editProfileUsername.text.toString()
+        viewModel.profile(username)
+        observeViewModel()
 
-        if(arguments != null) {
-            val nama = FragmentEditProfileArgs.fromBundle(requireArguments()).nama
-            val phone = FragmentEditProfileArgs.fromBundle(requireArguments()).phone
-            val email = FragmentEditProfileArgs.fromBundle(requireArguments()).email
 
-            editProfileEmail.setText(nama)
-            editProfilePhoneNumber.setText(phone)
-            editProfileNama.setText(email)
+//        buttonSave.setOnClickListener {
+//            viewModel.editAccount(editProfileEmail.text.toString(), editProfileNama.text.toString(), editProfilePhoneNumber.text.toString(), username)
+//            Toast.makeText(view.context, "Profile Updated Successfully", Toast.LENGTH_SHORT).show()
+//
+//            Navigation.findNavController(it).popBackStack()
+//        }
+    }
+
+    private fun observeViewModel(){
+        viewModel.accountDetailLD.observe(viewLifecycleOwner)  {
+            dataBinding.editProfile = it
+//            editProfileEmail.setText(it.email)
+//            editProfileNama.setText(it.name)
+//            editProfilePhoneNumber.setText(it.phoneNumber)
+//            editProfileUsername.setText(it.username)
         }
 
-        buttonSave.setOnClickListener {
-            Navigation.findNavController(it).navigate(FragmentEditProfileDirections.actionFragmentEditProfileToItemProfile(editProfileEmail.text.toString(),editProfilePhoneNumber.text.toString(),editProfileNama.text.toString()))
-        }
+    }
+
+    override fun onSaveProfileClickListener(view: View) {
+        val username = view.editProfileUsername.text.toString()
+        viewModel.editAccount(view.editProfileEmail.text.toString(), view.editProfileNama.text.toString(), view.editProfilePhoneNumber.text.toString(), username)
+        val action = FragmentEditProfileDirections.actionFragmentEditProfileToItemProfile(username)
+
+        Navigation.findNavController(view).navigate(action)
     }
 }

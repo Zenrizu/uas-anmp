@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Account(
-    @ColumnInfo(name = "username")
+    @PrimaryKey(autoGenerate = false)
     var username:String,
     @ColumnInfo(name = "email")
     var email:String,
@@ -17,9 +17,7 @@ data class Account(
     @ColumnInfo(name = "name")
     var name:String,
     @ColumnInfo(name = "phoneNumber")
-    var phoneNumber:String,
-    @PrimaryKey(autoGenerate = true)
-    var accountID:Int =0
+    var phoneNumber:String
 )
 
 @Entity
@@ -47,7 +45,7 @@ data class Kost(
 )
 
 @Entity
-data class KamarKost(
+data class Transaction(
     @ColumnInfo(name = "fasilitas")
     var fasilitas:String,
     @ColumnInfo(name = "tipeKamar")

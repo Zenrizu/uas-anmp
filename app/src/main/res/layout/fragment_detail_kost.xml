@@ -1,131 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.FragmentDetailKost">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/buttonLocationDetail"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="#AEAEAE"
-        android:textSize="12sp"
-        app:icon="@drawable/ic_baseline_location_on_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewKost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewDetailKost"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <data>
+        <variable
+            name="detailKost"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost" />
 
-    <TextView
-        android:id="@+id/textViewDetailNamaKost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Nama Kost"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttonLocationDetail"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLocationDetail" />
+    </data>
 
-    <TextView
-        android:id="@+id/textViewDeskripsiKost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:text="Deskripsi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewDetailNamaKost"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetailNamaKost" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.FragmentDetailKost">
 
-    <ImageView
-        android:id="@+id/imageViewDetailKost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        <Button
+            android:id="@+id/buttonLocationDetail"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="209dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="@{detailKost.alamat}"
+            android:textColor="#AEAEAE"
+            android:textSize="12sp"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconTint="#AEAEAE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/buttonBooking"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:text="Booking"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textViewDetailNamaKost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{detailKost.namaKost}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/buttonLocationDetail"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLocationDetail" />
 
-    <TextView
-        android:id="@+id/textViewHargaDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Harga"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewDetailKost"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewDetailKost" />
+        <TextView
+            android:id="@+id/textViewDeskripsiKost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:text="@{detailKost.deskripsi}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewDetailNamaKost"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetailNamaKost" />
 
-    <Button
-        android:id="@+id/buttonPhoneDetail"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="96dp"
-        android:text="Phone"
-        android:textColor="#AEAEAE"
-        app:icon="@drawable/ic_baseline_local_phone_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBooking"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/imageViewDetailKost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/buttonMessageDetail"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="36dp"
-        android:text="Message"
-        android:textColor="#AEAEAE"
-        app:icon="@drawable/ic_baseline_message_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toTopOf="@+id/buttonBooking"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/buttonBooking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="64dp"
+            android:text="Booking"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBarDetail"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        <TextView
+            android:id="@+id/textViewHargaDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{detailKost.harga}"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewDetailKost"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewDetailKost" />
 
-    <TextView
-        android:id="@+id/textViewID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPhoneDetail"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/buttonPhoneDetail"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="96dp"
+            android:text="@{detailKost.telepon}"
+            android:textColor="#AEAEAE"
+            app:icon="@drawable/ic_baseline_local_phone_24"
+            app:iconTint="#AEAEAE"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBooking"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/buttonMessageDetail"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="36dp"
+            android:text="@{detailKost.telepon}"
+            android:textColor="#AEAEAE"
+            app:icon="@drawable/ic_baseline_message_24"
+            app:iconTint="#AEAEAE"
+            app:layout_constraintBottom_toTopOf="@+id/buttonBooking"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBarDetail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.335" />
+
+        <TextView
+            android:id="@+id/textViewID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/buttonPhoneDetail"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

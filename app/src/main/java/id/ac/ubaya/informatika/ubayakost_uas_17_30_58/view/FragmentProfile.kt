@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.loadImage
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.AccountViewModel
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment__profile.*
+import kotlinx.android.synthetic.main.fragment__profile.view.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_my_kost.*
 
-class FragmentProfile : Fragment() {
+class FragmentProfile : Fragment(), ButtonEditProfilClickListener {
+
+    private lateinit var viewModel: AccountViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,20 +31,29 @@ class FragmentProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(arguments != null) {
-            val nama = FragmentProfileArgs.fromBundle(requireArguments()).nama
-            val phone = FragmentProfileArgs.fromBundle(requireArguments()).phone
-            val email = FragmentProfileArgs.fromBundle(requireArguments()).email
+        viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        val username = FragmentProfileArgs.fromBundle(requireArguments()).username
+        viewModel.profile(username)
+        observeViewModel()
 
-            textViewNama.setText(nama)
-            textViewEmail.setText(phone)
-            textViewPhoneNumber.setText(email)
-
-        }
-
-        imageViewProfile.loadImage("https://thumb.suara.com/REOX2RJtISUhU58TydB9iw1PEbg=/653x366/https://media.suara.com/pictures/653x366/2022/02/15/99844-ilustrasi-pria-sedang-bekerja-pexelscomandrea-piacquadio.jpg", progressBarProfile)
         buttonEditProfile.setOnClickListener {
-            Navigation.findNavController(it).navigate(FragmentProfileDirections.actionItemProfileToFragmentEditProfile(textViewNama.text.toString(),textViewPhoneNumber.text.toString(),textViewEmail.text.toString()))
+
         }
+    }
+
+    private fun observeViewModel(){
+        viewModel.accountDetailLD.observe(viewLifecycleOwner)  {
+            textViewUsername.text = it.username
+            textViewNama.text = it.name
+            textViewEmail.text = it.email
+            textViewPhoneNumber.text = it.phoneNumber
+        }
+
+    }
+
+    override fun onEditProfileClickListener(view: View) {
+        val username = view.textViewUsername.text.toString()
+        val action = FragmentProfileDirections.actionItemProfileToFragmentEditProfile(username)
+        Navigation.findNavController(view).navigate(action)
     }
 }

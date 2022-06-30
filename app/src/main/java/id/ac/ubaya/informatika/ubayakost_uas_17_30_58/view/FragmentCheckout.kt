@@ -48,7 +48,7 @@ class FragmentCheckout : Fragment() {
         viewModel.kostLiveData.observe(viewLifecycleOwner){
             val kost = it
             kost?.let {
-                id = it.id.toString()
+                id = it.idKost.toString()
                 textViewNoRek.setText(it.rekening)
                 textViewNamaTujuan.setText(it.pemilik)
             }

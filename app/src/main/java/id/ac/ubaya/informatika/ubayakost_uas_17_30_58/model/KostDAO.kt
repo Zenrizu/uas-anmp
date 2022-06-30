@@ -6,5 +6,4 @@ import androidx.room.*
 interface KostDAO {
     @Query("SELECT * FROM kost")
     suspend fun displayKost(): List<Kost>
-
 }
