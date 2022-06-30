@@ -33,7 +33,7 @@ fun ImageView.loadImage(url: String?,progressBar: ProgressBar) {
 
 val DB_KOST = "kostDBase"
 
-fun accountDb(context: Context):KostDatabase {
+fun kostDb(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_KOST).build()
     return db
 }

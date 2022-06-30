@@ -4,7 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.accountDb
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.kostDb
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
 
     fun login(username:String, password:String) {
         launch {
-            val db = accountDb(getApplication())//pemanggilan database dari util
+            val db = kostDb(getApplication())//pemanggilan database dari util
             if (username != "" && password != "" || username != accountLD.value?.username && password != accountLD.value?.password) {
                 result = "Failed"
                 Log.d("Global", "no")
@@ -38,7 +38,7 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
 
     fun profile(username: String) {
         launch {
-            val db = accountDb(getApplication())
+            val db = kostDb(getApplication())
             accountLD.value=db.accountDao().profile(username)
 //            db.accountDao().profile(username)
         }
@@ -46,14 +46,14 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
 
     fun register(account: Account) {
         launch {
-            val db = accountDb(getApplication())
+            val db = kostDb(getApplication())
             db.accountDao().register(account)
         }
     }
 
     fun editAccount(email: String, name: String, phoneNumber: String, username: String) {
         launch {
-            val db = accountDb(getApplication())
+            val db = kostDb(getApplication())
             db.accountDao().editAccount(email, name, phoneNumber, username)
         }
     }

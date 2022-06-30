@@ -57,8 +57,10 @@
                 android:layout_marginStart="134dp"
                 android:layout_marginBottom="177dp"
                 android:text="Button"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/recView"
-                app:layout_constraintStart_toStartOf="@+id/recView" />
+                app:layout_constraintStart_toStartOf="@+id/recView"
+                tools:visibility="gone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
