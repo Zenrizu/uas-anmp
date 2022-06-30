@@ -14,13 +14,15 @@ import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.loadImage
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.FragmentDetailKostBinding
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.FragmentRegisterBinding
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Global
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.AccountViewModel
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.DetailViewModel
 import kotlinx.android.synthetic.main.detail_kost_card.*
 import kotlinx.android.synthetic.main.fragment_detail_kost.*
+import kotlinx.android.synthetic.main.fragment_my_kost.*
 
-class FragmentDetailKost : Fragment() {
+class FragmentDetailKost : Fragment(), ButtonCheckoutListener {
     private lateinit var viewModel: DetailViewModel
     private lateinit var dataBinding: FragmentDetailKostBinding
 
@@ -35,12 +37,27 @@ class FragmentDetailKost : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        dataBinding.detailKost = Kost("","","","","","","","","", 0)
+        Global.idkost = FragmentDetailKostArgs.fromBundle(requireArguments()).id
+        dataBinding.detailKost = Kost("","","","","","","","","", Global.idkost.toInt())
+        dataBinding.checkoutListener = this
 
+        viewModel.fetch(Global.idkost)
+        observeViewModel()
 //        buttonBooking.setOnClickListener {
 //            val action = FragmentDetailKostDirections.actionCheckout(textViewID.text.toString())
 //            Navigation.findNavController(it).navigate(action)
 //        }
+    }
+
+    fun observeViewModel(){
+        viewModel.kostLiveData.observe(viewLifecycleOwner){
+            dataBinding.detailKost =it
+        }
+
+    }
+    override fun onButtonCheckoutListener(view: View) {
+        val action = FragmentDetailKostDirections.actionCheckout(Global.idkost)
+            Navigation.findNavController(view).navigate(action)
     }
 //    private fun observeViewModel() {
 //        viewModel.kostLiveData.observe(viewLifecycleOwner){

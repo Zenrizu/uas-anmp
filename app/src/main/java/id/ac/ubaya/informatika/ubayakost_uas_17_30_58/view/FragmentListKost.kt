@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,42 @@ class  FragmentListKost : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel.display()
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = listKostAdapter
+
+        observeViewModel()
+
+        refreshLayout.setOnRefreshListener {
+            recyclerView.visibility = View.GONE
+            textViewError.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+            viewModel.display()
+//            println(viewModel.display())
+            refreshLayout.isRefreshing = false
+        }
+
+    }
+
+    private fun observeViewModel() {
+        viewModel.kostLiveData.observe(viewLifecycleOwner) {
+            listKostAdapter.updateKostList(it)
+        }
+        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner) {
+            textViewError.visibility = if (it) View.VISIBLE else View.GONE
+        }
+        viewModel.loadingLiveData.observe(viewLifecycleOwner) {
+            if(it) {
+                recyclerView.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
+            } else {
+                recyclerView.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
+            }
+        }
+    }
+}
 
 //        buttonAddKostData.setOnClickListener {
 //            val dd1 = Kost(
@@ -89,39 +126,3 @@ class  FragmentListKost : Fragment() {
 //            viewModel.insertData(list3)
 //            viewModel.insertData(list4)
 //        }
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        viewModel.display()
-
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = listKostAdapter
-
-        observeViewModel()
-
-        refreshLayout.setOnRefreshListener {
-            recyclerView.visibility = View.GONE
-            textViewError.visibility = View.GONE
-            progressBar.visibility = View.VISIBLE
-            viewModel.display()
-            refreshLayout.isRefreshing = false
-        }
-
-    }
-
-    private fun observeViewModel() {
-        viewModel.kostLiveData.observe(viewLifecycleOwner) {
-            listKostAdapter.updateKostList(it)
-        }
-        viewModel.kostLoadErrorLiveData.observe(viewLifecycleOwner) {
-            textViewError.visibility = if (it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingLiveData.observe(viewLifecycleOwner) {
-            if(it) {
-                recyclerView.visibility = View.GONE
-                progressBar.visibility = View.VISIBLE
-            } else {
-                recyclerView.visibility = View.VISIBLE
-                progressBar.visibility = View.GONE
-            }
-        }
-    }
-}

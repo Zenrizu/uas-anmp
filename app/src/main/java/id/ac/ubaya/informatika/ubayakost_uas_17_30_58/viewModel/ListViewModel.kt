@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
@@ -39,6 +40,8 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
                 KostDatabase::class.java, "kostDBase").build()
 
             kostLiveData.value = db.kostDao().displayKost()
+            val TAG = "myactivity"
+            Log.d(TAG, kostLiveData.value.toString())
         }
     }
 

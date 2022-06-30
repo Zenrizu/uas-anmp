@@ -1,8 +1,10 @@
 package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +28,8 @@ class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<List
 
     override fun onBindViewHolder(holder: ListKostViewHolder, position: Int) {
         holder.view.kostCard = listKost[position]
+        val TAG = "myactivity2"
+        Log.d(TAG, listKost[position].toString())
         holder.view.detailListener = this
 
 //        with(holder.view) {

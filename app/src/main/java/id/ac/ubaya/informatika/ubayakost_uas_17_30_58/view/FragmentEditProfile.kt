@@ -11,9 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.FragmentEditProfileBinding
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Global
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
+import java.util.*
 
 class FragmentEditProfile : Fragment(), ButtonSaveProfilClickListener{
 
@@ -32,8 +35,10 @@ class FragmentEditProfile : Fragment(), ButtonSaveProfilClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
-        val username = view.editProfileUsername.text.toString()
-        viewModel.profile(username)
+//        val username = view.editProfileUsername.text.toString()
+
+        viewModel.profile(Global.username)
+        dataBinding.listener=this
         observeViewModel()
 
 
@@ -47,20 +52,17 @@ class FragmentEditProfile : Fragment(), ButtonSaveProfilClickListener{
 
     private fun observeViewModel(){
         viewModel.accountLD.observe(viewLifecycleOwner)  {
-            dataBinding.editProfile = it
-//            editProfileEmail.setText(it.email)
-//            editProfileNama.setText(it.name)
-//            editProfilePhoneNumber.setText(it.phoneNumber)
-//            editProfileUsername.setText(it.username)
+            dataBinding.profil = it
         }
 
     }
 
-    override fun onSaveProfileClickListener(view: View) {
-        val username = view.editProfileUsername.text.toString()
-        viewModel.editAccount(view.editProfileEmail.text.toString(), view.editProfileNama.text.toString(), view.editProfilePhoneNumber.text.toString(), username)
+    override fun onSaveProfileClickListener(view: View, obj:Account) {
+        val username = Global.username
+//        viewModel.editAccount(view.editProfileEmail.text.toString(), view.editProfileNama.text.toString(), view.editProfilePhoneNumber.text.toString(), username)
+        viewModel.editAccount(obj.email,obj.name,obj.phoneNumber,obj.username)
+        Toast.makeText(view.context,"Profile updated", Toast.LENGTH_SHORT).show()
         val action = FragmentEditProfileDirections.actionFragmentEditProfileToItemProfile(username)
-
         Navigation.findNavController(view).navigate(action)
     }
 }

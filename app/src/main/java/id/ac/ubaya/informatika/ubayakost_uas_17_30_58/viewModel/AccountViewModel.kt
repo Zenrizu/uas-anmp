@@ -39,7 +39,8 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
     fun profile(username: String) {
         launch {
             val db = accountDb(getApplication())
-            db.accountDao().profile(username)
+            accountLD.value=db.accountDao().profile(username)
+//            db.accountDao().profile(username)
         }
     }
 

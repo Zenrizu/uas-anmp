@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main"
-    app:startDestination="@id/itemHome">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -82,9 +82,6 @@
             app:destination="@id/itemProfile"
             app:popUpTo="@id/itemProfile"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="username"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemRegister"
