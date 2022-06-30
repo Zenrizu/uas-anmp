@@ -3,6 +3,7 @@ package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
@@ -18,7 +19,8 @@ class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<List
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListKostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DetailKostCardBinding.inflate(inflater, parent, false)
+//        val view = DetailKostCardBinding.inflate(inflater, parent, false)
+        val view = DataBindingUtil.inflate<DetailKostCardBinding>(inflater, R.layout.detail_kost_card, parent, false)
         return ListKostViewHolder(view)
     }
 
