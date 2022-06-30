@@ -13,3 +13,23 @@ interface ButtonEditProfilClickListener {
 interface ButtonSaveProfilClickListener {
     fun onSaveProfileClickListener(view: View)
 }
+
+interface ButtonLoginClickListener {
+    fun onButtonLoginClickListener(view: View)
+}
+
+interface ButtonRegisterNowListener {
+    fun onButtonRegisterNowListener(view: View)
+}
+
+interface ButtonSaveRegisterListener {
+    fun onButtonSaveRegisterListener(view: View)
+}
+
+interface ButtonCheckoutListener {
+    fun onButtonCheckoutListener(view: View)
+}
+
+interface ButtonSelesaiCheckoutListener {
+    fun onButtonSelesaiCheckoutListener(view: View)
+}

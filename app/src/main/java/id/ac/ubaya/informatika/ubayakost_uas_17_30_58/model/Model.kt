@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonSaveRegisterListener
 
 @Entity
 data class Account(

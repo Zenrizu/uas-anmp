@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Dao
 interface AccountDAO {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun register(vararg account: Account)
 
     @Query("SELECT * FROM account WHERE username= :username AND password= :password")

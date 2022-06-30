@@ -13,10 +13,7 @@ import kotlin.coroutines.CoroutineContext
 
 class AccountViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
 
-    val accountLD = MutableLiveData<List<Account>>()
-    val accountDetailLD = MutableLiveData<Account>()
-    val accountLoadErrorLD = MutableLiveData<Boolean>()
-    val loadingLD = MutableLiveData<Boolean>()
+    val accountLD = MutableLiveData<Account>()
 
     private var job = Job()
 
@@ -24,28 +21,23 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         get() = job + Dispatchers.Main
 
     fun login(username:String, password:String) {
-
-        loadingLD.value = true
-        accountLoadErrorLD.value = false
         launch {
             val db = accountDb(getApplication())
-            accountLD.value = listOf(db.accountDao().login(username, password))
+            accountLD.value = db.accountDao().login(username, password)
         }
     }
 
     fun profile(username: String){
-        loadingLD.value = true
-        accountLoadErrorLD.value = false
         launch {
             val db = accountDb(getApplication())
             db.accountDao().profile(username)
         }
     }
 
-    fun register(list: List<Account>){
+    fun register(account: Account){
         launch{
             val db = accountDb(getApplication())
-            db.accountDao().register(*list.toTypedArray())
+            db.accountDao().register(account)
         }
     }
 

@@ -46,7 +46,7 @@ class FragmentEditProfile : Fragment(), ButtonSaveProfilClickListener{
     }
 
     private fun observeViewModel(){
-        viewModel.accountDetailLD.observe(viewLifecycleOwner)  {
+        viewModel.accountLD.observe(viewLifecycleOwner)  {
             dataBinding.editProfile = it
 //            editProfileEmail.setText(it.email)
 //            editProfileNama.setText(it.name)

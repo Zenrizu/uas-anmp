@@ -5,6 +5,12 @@
 
     <data>
         <variable
+            name="login"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonLoginClickListener" />
+        <variable
+            name="registerNow"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonRegisterNowListener" />
+        <variable
             name="account"
             type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account" />
 
@@ -25,6 +31,7 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="Username"
+            android:text="@{account.username}"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +48,7 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="Password"
+            android:text="@{account.password}"
             android:inputType="textPassword"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +63,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:text="Login"
+            android:onClick="@{login::onButtonLoginClickListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin" />
@@ -66,6 +75,7 @@
             android:layout_height="wrap_content"
             android:text="Dont't have account? Register Now"
             android:textColor="#2196F3"
+            android:onClick="@{registerNow::onButtonRegisterNowListener}"
             app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
             app:layout_constraintStart_toStartOf="@+id/buttonLogin"
             app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />

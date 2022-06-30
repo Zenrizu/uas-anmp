@@ -42,11 +42,11 @@ class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<List
 
     override fun getItemCount() =  listKost.size
 
-//    fun updateKostList(newKostList: List<Kost>) {
-//        listKost.clear()
-//        listKost.addAll(newKostList)
-//        notifyDataSetChanged()
-//    }
+    fun updateKostList(newKostList: List<Kost>) {
+        listKost.clear()
+        listKost.addAll(newKostList)
+        notifyDataSetChanged()
+    }
 
     override fun onDetailClickListener(view: View) {
         val idKost = view.tag.toString()

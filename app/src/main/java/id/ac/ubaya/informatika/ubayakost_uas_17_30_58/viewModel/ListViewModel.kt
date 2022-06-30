@@ -40,7 +40,7 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                KostDatabase::class.java, "kost").build()
+                KostDatabase::class.java, "kostDBase").build()
 
             kostLiveData.value = db.kostDao().displayKost()
         }
