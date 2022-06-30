@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.kostDb
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.MyKost
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,19 +35,13 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
                 KostDatabase::class.java, "kostDBase").build()
 
             kostLiveData.value = db.kostDao().displayKost()
-            loadingLiveData.value = false
-//            val TAG = "myactivity"
-//            Log.d(TAG, kostLiveData.value.toString())
         }
     }
 
-    fun insertData(kost: List<Kost>) {
+    fun booking(myKost: MyKost) {
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                KostDatabase::class.java, "kostDBase").build()
-
-            db.kostDao().addKost(*kost.toTypedArray())
+            val db = kostDb(getApplication())
+            db.myKostDAO().book(myKost)
         }
     }
 }

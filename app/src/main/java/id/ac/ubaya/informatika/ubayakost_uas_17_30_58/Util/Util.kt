@@ -6,6 +6,7 @@ import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -34,11 +35,19 @@ fun ImageView.loadImage(url: String?,progressBar: ProgressBar) {
 val DB_KOST = "kostDBase"
 
 fun kostDb(context: Context):KostDatabase {
-    val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_KOST).build()
+    val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_KOST).addMigrations(
+        MIGRATION_1_2).build()
     return db
 }
 
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view: ImageView, url: String?, progressBar: ProgressBar) {
     view.loadImage(url, progressBar)
+}
+
+val MIGRATION_1_2 = object : Migration(1, 2) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL("DROP TABLE myKost")
+        database.execSQL("CREATE TABLE myKost (username STRING, namaKost STRING, deskripsi STRING, foto STRING,idMyKost Int, PRIMARY KEY(idMyKost))")
+    }
 }

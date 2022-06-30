@@ -1,108 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout5"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.FragmentMyKost">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/buttonMessageMyKost"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="104dp"
-        android:text="Message"
-        android:textColor="#AEAEAE"
-        app:icon="@drawable/ic_baseline_message_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <data>
+        <variable
+            name="myKost"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.MyKost" />
+        <variable
+            name="cancelBookingListener"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonCancelBookListener" />
+    </data>
 
-    <Button
-        android:id="@+id/buttonPhoneMyKost"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Phone"
-        android:textColor="#AEAEAE"
-        app:icon="@drawable/ic_baseline_local_phone_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toTopOf="@+id/buttonMessageMyKost"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.FragmentMyKost">
 
-    <Button
-        android:id="@+id/buttonLocationMyKost"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="#AEAEAE"
-        app:icon="@drawable/ic_baseline_location_on_24"
-        app:iconTint="#AEAEAE"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewKost"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewMyKost"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/buttonLocationMyKost"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="#AEAEAE"
+            app:icon="@drawable/ic_baseline_location_on_24"
+            app:iconTint="#AEAEAE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewMyKost"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/textViewMyKostNamaKost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Nama Kost"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/buttonLocationMyKost"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLocationMyKost" />
+        <TextView
+            android:id="@+id/textViewMyKostNamaKost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{myKost.namaKost}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/buttonLocationMyKost"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLocationMyKost" />
 
-    <TextView
-        android:id="@+id/textViewMyKostDeskripsiKost"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="Deskripsi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewMyKostNamaKost"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMyKostNamaKost" />
+        <TextView
+            android:id="@+id/textViewMyKostDeskripsiKost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="@{myKost.deskripsi}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewMyKostNamaKost"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMyKostNamaKost" />
 
-    <ImageView
-        android:id="@+id/imageViewMyKost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        <ImageView
+            android:id="@+id/imageViewMyKost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:imageUrl="@{myKost.foto}"
+            android:progressBar="@{progressBarMyKost}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/textViewMyKostHarga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Harga"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewMyKost"
-        app:layout_constraintStart_toStartOf="@+id/imageViewMyKost"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewMyKost" />
+        <ProgressBar
+            android:id="@+id/progressBarMyKost"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="204dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBarMyKost"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/buttonCancelBook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="Cancel Booking"
+            android:onClick="@{cancelBookingListener::onButtonCancelBookListener}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -34,3 +34,7 @@ interface ButtonCheckoutListener {
 interface ButtonSelesaiCheckoutListener {
     fun onButtonSelesaiCheckoutListener(view: View)
 }
+
+interface ButtonCancelBookListener {
+    fun onButtonCancelBookListener(view: View)
+}

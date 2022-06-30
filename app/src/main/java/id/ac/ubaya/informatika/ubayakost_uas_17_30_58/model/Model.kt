@@ -50,8 +50,14 @@ data class Kost(
 data class MyKost(
     @ColumnInfo(name = "username")
     var username: String,
-    @ColumnInfo(name = "idKost")
-    var idKost: Int,
-    @PrimaryKey
-    var idMyKost: String
+    @ColumnInfo(name = "namaKost")
+    var namaKost: String,
+    @ColumnInfo(name = "deskripsi")
+    var deskripsi: String,
+    @ColumnInfo(name = "alamat")
+    var alamat:String,
+    @ColumnInfo(name = "foto")
+    var foto:String,
+    @PrimaryKey(autoGenerate = false)
+    var idMyKost: Int
 )

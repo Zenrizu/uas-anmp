@@ -6,7 +6,7 @@ import androidx.room.*
 interface MyKostDAO{
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert(vararg myKost: MyKost)
+    suspend fun book(vararg myKost: MyKost)
 
     @Query("SELECT * FROM myKost WHERE username= :username")
     suspend fun displayMyKost(username:String):MyKost

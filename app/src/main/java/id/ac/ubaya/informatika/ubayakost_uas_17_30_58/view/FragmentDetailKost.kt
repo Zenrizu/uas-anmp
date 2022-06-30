@@ -43,10 +43,7 @@ class FragmentDetailKost : Fragment(), ButtonCheckoutListener {
 
         viewModel.fetch(Global.idkost)
         observeViewModel()
-//        buttonBooking.setOnClickListener {
-//            val action = FragmentDetailKostDirections.actionCheckout(textViewID.text.toString())
-//            Navigation.findNavController(it).navigate(action)
-//        }
+
     }
 
     fun observeViewModel(){
@@ -57,8 +54,9 @@ class FragmentDetailKost : Fragment(), ButtonCheckoutListener {
     }
     override fun onButtonCheckoutListener(view: View) {
         val action = FragmentDetailKostDirections.actionCheckout(Global.idkost)
-            Navigation.findNavController(view).navigate(action)
+        Navigation.findNavController(view).navigate(action)
     }
+}
 //    private fun observeViewModel() {
 //        viewModel.kostLiveData.observe(viewLifecycleOwner){
 //            val kost = it
@@ -77,4 +75,3 @@ class FragmentDetailKost : Fragment(), ButtonCheckoutListener {
 //            }
 //        }
 //    }
-}
