@@ -52,6 +52,6 @@ data class MyKost(
     var username: String,
     @ColumnInfo(name = "idKost")
     var idKost: Int,
-    @PrimaryKey(autoGenerate = false)
-    var idMyKost: String
+    @PrimaryKey(autoGenerate = true)
+    var idMyKost: Int
 )

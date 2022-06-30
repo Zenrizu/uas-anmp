@@ -4,16 +4,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
-import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.loadImage
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.DetailKostCardBinding
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost
-import kotlinx.android.synthetic.main.detail_kost_card.view.*
-import kotlinx.android.synthetic.main.fragment_list_kost.view.*
 import java.util.ArrayList
 
 class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<ListKostAdapter.ListKostViewHolder>(), ButtonDetailClickListener {
@@ -28,8 +24,9 @@ class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<List
 
     override fun onBindViewHolder(holder: ListKostViewHolder, position: Int) {
         holder.view.kostCard = listKost[position]
+
         val TAG = "myactivity2"
-        Log.d(TAG, listKost[position].toString())
+        Log.d(TAG, listKost[position].namaKost.toString())
         holder.view.detailListener = this
 
 //        with(holder.view) {

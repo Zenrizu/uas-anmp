@@ -30,7 +30,7 @@ class DetailViewModel(application: Application): AndroidViewModel(application), 
         fun fetch(id: String) {
 
             val db = accountDb(getApplication())
-            kostLiveData.value = db.kostDao().detailKost(id)
+//            kostLiveData.value = db.kostDao().detailKost(id)
 
 
 //            queue = Volley.newRequestQueue(getApplication())

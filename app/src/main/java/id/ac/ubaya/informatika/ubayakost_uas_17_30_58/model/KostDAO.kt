@@ -10,6 +10,6 @@ interface KostDAO {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addKost(vararg kost: Kost)
 
-    @Query("SELECT * FROM Kost WHERE idKost = :id")
-    suspend fun detailKost(id: String)
+//    @Query("SELECT * FROM Kost WHERE idKost = :id")
+//    suspend fun detailKost(id: String):Kost
 }
