@@ -8,7 +8,7 @@
             name="register"
             type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonSaveRegisterListener" />
         <variable
-            name="account"
+            name="accountRegister"
             type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account" />
 
     </data>
@@ -48,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:text="@={account.password}"/>
+                android:text="@={accountRegister.password}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +68,7 @@
                 android:layout_height="match_parent"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:text="@={account.email}"/>
+                android:text="@={accountRegister.email}"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Username"
-                android:text="@={account.username}"/>
+                android:text="@={accountRegister.username}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Name"
-                android:text="@={account.name}" />
+                android:text="@={accountRegister.name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +121,7 @@
                 android:layout_height="match_parent"
                 android:hint="Phone Number"
                 android:inputType="number|phone"
-                android:text="@={account.phoneNumber}"/>
+                android:text="@={accountRegister.phoneNumber}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

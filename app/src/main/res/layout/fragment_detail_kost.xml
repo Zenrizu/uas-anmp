@@ -7,6 +7,9 @@
         <variable
             name="detailKost"
             type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost" />
+        <variable
+            name="checkoutListener"
+            type="id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonCheckoutListener" />
 
     </data>
 
@@ -72,6 +75,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="64dp"
             android:text="Booking"
+            android:onClick="@{checkoutListener::onButtonCheckoutListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

@@ -1,5 +1,6 @@
 package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.databinding.FragmentLoginBinding
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Account
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Global
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.AccountViewModel
 import kotlinx.android.synthetic.main.fragment__profile.view.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
@@ -21,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 class FragmentLogin : Fragment(), ButtonLoginClickListener, ButtonRegisterNowListener {
     private lateinit var viewModel: AccountViewModel
     private lateinit var dataBinding:FragmentLoginBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,18 +45,16 @@ class FragmentLogin : Fragment(), ButtonLoginClickListener, ButtonRegisterNowLis
     override fun onButtonLoginClickListener(view: View) {
 
         viewModel.login(dataBinding?.account!!.username, dataBinding?.account!!.password)
-        Toast.makeText(view.context, "Welcome!!", Toast.LENGTH_LONG).show()
-        Navigation.findNavController(view).navigate(FragmentLoginDirections.actionListKost())
 
-//        else if(viewModel.result=="OK")
-//        {
-//            Toast.makeText(v.context, "Welcome!!", Toast.LENGTH_LONG).show()
-//            val action = FragmentLoginDirections.actionMainActivity()
-//            Navigation.findNavController(v).navigate(action)
-//            Global.username=dataBinding?.user!!.username
-//
-//            /*Toast.makeText(v.context, "${Global.username}", Toast.LENGTH_LONG).show()*/
-//        }
+        if(viewModel.result=="Failed") {
+            val builder = AlertDialog.Builder(view.context)
+            builder.setTitle("Login Failed")
+            builder.setMessage("Please Check your username and password")
+        } else {
+            Toast.makeText(view.context, "Welcome!!", Toast.LENGTH_LONG).show()
+            Global.username=dataBinding?.account!!.username
+            Navigation.findNavController(view).navigate(FragmentLoginDirections.actionListKost())
+        }
     }
 
     override fun onButtonRegisterNowListener(view: View) {

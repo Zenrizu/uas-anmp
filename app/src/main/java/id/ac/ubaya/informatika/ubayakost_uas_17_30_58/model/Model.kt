@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.ButtonSaveRegisterListener
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.view.FragmentMyKost
 
 @Entity
 data class Account(
@@ -46,11 +47,11 @@ data class Kost(
 )
 
 @Entity
-data class Transaction(
-    @ColumnInfo(name = "fasilitas")
-    var fasilitas:String,
-    @ColumnInfo(name = "tipeKamar")
-    var tiperKamar:String,
-    @PrimaryKey(autoGenerate = false)
-    var nomorKamar: String,
+data class MyKost(
+    @ColumnInfo(name = "username")
+    var username: String,
+    @ColumnInfo(name = "idKost")
+    var idKost: Int,
+    @PrimaryKey(autoGenerate = true)
+    var idMyKost: Int
 )

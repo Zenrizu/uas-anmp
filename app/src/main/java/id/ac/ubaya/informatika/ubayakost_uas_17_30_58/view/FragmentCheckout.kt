@@ -41,7 +41,7 @@ class FragmentCheckout : Fragment() {
 
         buttonSelesai.setOnClickListener {
             Navigation.findNavController(it).navigate(FragmentCheckoutDirections.actionFragmentCheckoutToItemHome())
-            Global.id = id
+//            Global.id = id
         }
     }
     private fun observeViewModel() {

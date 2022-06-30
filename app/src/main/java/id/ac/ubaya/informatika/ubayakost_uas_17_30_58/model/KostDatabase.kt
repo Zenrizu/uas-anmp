@@ -3,10 +3,11 @@ package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model
 import android.content.Context
 import androidx.room.*
 
-@Database(entities = arrayOf(Kost::class, Account::class), version = 1)
+@Database(entities = arrayOf(Kost::class, Account::class, MyKost::class), version = 2)
 abstract class KostDatabase:RoomDatabase() {
     abstract fun kostDao(): KostDAO
     abstract fun accountDao(): AccountDAO
+    abstract fun myKostDAO(): MyKostDAO
 
     companion object {
         @Volatile private var instance: KostDatabase? = null

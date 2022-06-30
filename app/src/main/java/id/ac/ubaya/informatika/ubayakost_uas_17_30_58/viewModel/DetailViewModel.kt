@@ -14,7 +14,6 @@ import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost
 
 class DetailViewModel(application: Application): AndroidViewModel(application) {
         val kostLiveData = MutableLiveData<Kost>()
-        val Tag = "volleyTag"
         private var queue: RequestQueue? = null
 
         fun fetch(id: String) {

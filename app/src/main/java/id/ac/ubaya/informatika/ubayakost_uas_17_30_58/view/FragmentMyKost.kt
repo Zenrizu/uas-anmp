@@ -30,8 +30,8 @@ class FragmentMyKost : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        val id = Global.id
-        viewModel.fetch(id)
+//        val id = Global.id
+//        viewModel.fetch(id)
 
 
         observeViewModel()

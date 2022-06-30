@@ -49,8 +49,7 @@ class ListKostAdapter(val listKost: ArrayList<Kost>) : RecyclerView.Adapter<List
     }
 
     override fun onDetailClickListener(view: View) {
-        val idKost = view.tag.toString()
-        val action = FragmentListKostDirections.actionDetailKost(idKost)
+        val action = FragmentListKostDirections.actionDetailKost(view.tag.toString())
 
         Navigation.findNavController(view).navigate(action)
     }

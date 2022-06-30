@@ -6,4 +6,7 @@ import androidx.room.*
 interface KostDAO {
     @Query("SELECT * FROM kost")
     suspend fun displayKost(): List<Kost>
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
+    suspend fun addKost(vararg kost: Kost)
 }

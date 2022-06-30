@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.Util.accountDb
@@ -14,6 +15,7 @@ import kotlin.coroutines.CoroutineContext
 class AccountViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
 
     val accountLD = MutableLiveData<Account>()
+    var result = ""
 
     private var job = Job()
 
@@ -22,30 +24,36 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
 
     fun login(username:String, password:String) {
         launch {
-            val db = accountDb(getApplication())
+            val db = accountDb(getApplication())//pemanggilan database dari util
+            if (username != "" && password != "" || username != accountLD.value?.username && password != accountLD.value?.password) {
+                result = "Failed"
+                Log.d("Global", "no")
+            } else {
+                result = "Success"
+                Log.d("Global", "ok")
+            }
             accountLD.value = db.accountDao().login(username, password)
         }
     }
 
-    fun profile(username: String){
+    fun profile(username: String) {
         launch {
             val db = accountDb(getApplication())
             db.accountDao().profile(username)
         }
     }
 
-    fun register(account: Account){
-        launch{
+    fun register(account: Account) {
+        launch {
             val db = accountDb(getApplication())
             db.accountDao().register(account)
         }
     }
 
-    fun editAccount(email:String, name:String, phoneNumber: String, username: String){
+    fun editAccount(email: String, name: String, phoneNumber: String, username: String) {
         launch {
             val db = accountDb(getApplication())
             db.accountDao().editAccount(email, name, phoneNumber, username)
         }
     }
-
 }

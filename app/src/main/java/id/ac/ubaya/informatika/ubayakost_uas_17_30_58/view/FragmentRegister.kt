@@ -32,12 +32,12 @@ class FragmentRegister : Fragment(), ButtonSaveRegisterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
-        dataBinding.account = Account("","","","","")
+        dataBinding.accountRegister = Account("","","","","")
         dataBinding.register = this
     }
 
     override fun onButtonSaveRegisterListener(view: View) {
-        viewModel.register(dataBinding.account!!)
+        viewModel.register(dataBinding.accountRegister!!)
         Toast.makeText(view.context, "Account Registered Successfully", Toast.LENGTH_LONG).show()
         Navigation.findNavController(view).popBackStack()
     }
