@@ -35,6 +35,17 @@ class ListViewModel(application: Application) : AndroidViewModel(application), C
                 KostDatabase::class.java, "kostDBase").build()
 
             kostLiveData.value = db.kostDao().displayKost()
+            loadingLiveData.value = false
+        }
+    }
+
+    fun insertData(kost: List<Kost>) {
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                KostDatabase::class.java, "kostDBase").build()
+
+            db.kostDao().addKost(*kost.toTypedArray())
         }
     }
 

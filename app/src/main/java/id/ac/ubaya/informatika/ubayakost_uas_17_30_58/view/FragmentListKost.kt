@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.R
+import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.model.Kost
 import id.ac.ubaya.informatika.ubayakost_uas_17_30_58.viewModel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list_kost.*
 
@@ -27,7 +28,6 @@ class  FragmentListKost : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.display()
-//        println(listKostAdapter)
         recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = listKostAdapt
 

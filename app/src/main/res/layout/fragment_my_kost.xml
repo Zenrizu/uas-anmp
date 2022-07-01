@@ -37,23 +37,27 @@
 
         <TextView
             android:id="@+id/textViewMyKostNamaKost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:text="@{myKost.namaKost}"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/buttonLocationMyKost"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewMyKost"
             app:layout_constraintTop_toBottomOf="@+id/buttonLocationMyKost" />
 
         <TextView
             android:id="@+id/textViewMyKostDeskripsiKost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@{myKost.deskripsi}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textViewMyKostNamaKost"
+            app:layout_constraintStart_toEndOf="@+id/imageViewMyKost"
             app:layout_constraintTop_toBottomOf="@+id/textViewMyKostNamaKost" />
 
         <ImageView
@@ -85,9 +89,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            android:text="Cancel Booking"
+            android:layout_marginBottom="64dp"
             android:onClick="@{cancelBookingListener::onButtonCancelBookListener}"
+            android:text="Cancel Booking"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="72dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginEnd="16dp"
             android:text="No Rekening Tujuan"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,32 +54,33 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="Atas Nama"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textViewNoRek"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewNoRek" />
 
         <TextView
             android:id="@+id/textViewNamaTujuan"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@{detailCheckout.pemilik}"
-            app:layout_constraintEnd_toEndOf="@+id/textView7"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <TextView
             android:id="@+id/textViewNoRek"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="16dp"
             android:text="@{detailCheckout.rekening}"
-            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button

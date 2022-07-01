@@ -37,13 +37,18 @@ class FragmentDetailKost : Fragment(), ButtonCheckoutListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        Global.idkost = FragmentDetailKostArgs.fromBundle(requireArguments()).id
-        dataBinding.detailKost = Kost("","","","","","","","","", Global.idkost.toInt())
-        dataBinding.checkoutListener = this
 
+
+//        dataBinding.detailKost = Kost("","","","","","","","","", Global.idkost.toInt())
+
+        if (arguments!=null)
+        {
+            Global.idkost = FragmentDetailKostArgs.fromBundle(requireArguments()).id
+            println(Global.idkost)
+        }
         viewModel.fetch(Global.idkost)
         observeViewModel()
-
+        dataBinding.checkoutListener = this
     }
 
     fun observeViewModel(){

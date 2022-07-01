@@ -22,39 +22,44 @@
         <Button
             android:id="@+id/buttonLocationDetail"
             style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="209dp"
-            android:layout_height="58dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:text="@{detailKost.alamat}"
             android:textColor="#AEAEAE"
             android:textSize="12sp"
             app:icon="@drawable/ic_baseline_location_on_24"
             app:iconTint="#AEAEAE"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetailKost"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textViewDetailNamaKost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@{detailKost.namaKost}"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/buttonLocationDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetailKost"
             app:layout_constraintTop_toBottomOf="@+id/buttonLocationDetail" />
 
         <TextView
             android:id="@+id/textViewDeskripsiKost"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:text="@{detailKost.deskripsi}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textViewDetailNamaKost"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDetailKost"
             app:layout_constraintTop_toBottomOf="@+id/textViewDetailNamaKost" />
 
         <ImageView
@@ -85,11 +90,11 @@
 
         <TextView
             android:id="@+id/textViewHargaDetail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="@{detailKost.harga}"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewDetailKost"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewDetailKost" />
 
@@ -98,7 +103,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@{detailKost.telepon}"
             android:textColor="#AEAEAE"
